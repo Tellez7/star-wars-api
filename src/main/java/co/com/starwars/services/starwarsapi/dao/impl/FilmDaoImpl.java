@@ -1,7 +1,9 @@
 package co.com.starwars.services.starwarsapi.dao.impl;
 
+import static co.com.starwars.services.starwarsapi.util.EntityToObject.consumeResponseToEntity;
+import static co.com.starwars.services.starwarsapi.util.EntityToObject.filmToEntity;
+
 import co.com.starwars.services.starwarsapi.consumer.FilmConsumer;
-import co.com.starwars.services.starwarsapi.consumer.model.FilmConsumerResponse;
 import co.com.starwars.services.starwarsapi.dao.FilmDao;
 import co.com.starwars.services.starwarsapi.model.dto.Film;
 import co.com.starwars.services.starwarsapi.model.entity.FilmEntity;
@@ -40,21 +42,5 @@ public class FilmDaoImpl implements FilmDao {
     @Override
     public void deleteById(Integer id) {
         filmRepository.deleteById(id);
-    }
-
-    private FilmEntity consumeResponseToEntity(FilmConsumerResponse filmConsumerResponse) {
-        return FilmEntity.builder()
-                .episodeId(filmConsumerResponse.getEpisodeId())
-                .title(filmConsumerResponse.getTitle())
-                .releaseDate(filmConsumerResponse.getReleaseDate())
-                .build();
-    }
-
-    private FilmEntity filmToEntity(Film film) {
-        return FilmEntity.builder()
-                .episodeId(film.getEpisodeId())
-                .title(film.getTitle())
-                .releaseDate(film.getReleaseDate())
-                .build();
     }
 }

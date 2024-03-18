@@ -1,5 +1,6 @@
 package co.com.starwars.services.starwarsapi.service.impl;
 
+import static co.com.starwars.services.starwarsapi.util.EntityToObject.entityToResponse;
 import static co.com.starwars.services.starwarsapi.util.constants.Constant.MAX_SIZE_ID;
 import static java.lang.Integer.parseInt;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class FilmImplService implements FilmService {
+public class FilmServiceImpl implements FilmService {
 
     private final FilmDao filmDao;
 
@@ -53,14 +54,6 @@ public class FilmImplService implements FilmService {
         } else if (findById(id) != null) {
             filmDao.deleteById(parseInt(id));
         }
-    }
-
-    private Film entityToResponse(FilmEntity filmEntity) {
-        return Film.builder()
-                .episodeId(filmEntity.getEpisodeId())
-                .title(filmEntity.getTitle())
-                .releaseDate(filmEntity.getReleaseDate())
-                .build();
     }
 
     private Film entityOrThrowNotFoundException(FilmEntity response) {

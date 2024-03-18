@@ -1,14 +1,14 @@
 package co.com.starwars.services.starwarsapi.consumer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
 
 @Getter
-@Setter
+@Builder
 public class FilmConsumerResponse {
 
     private String title;
